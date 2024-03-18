@@ -5,7 +5,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.table.*;
+import javax.swing.table.TableModel;
 import java.net.URL;
+
+import java.util.ArrayList;
+
+import java.io.IOException;
 
 public class TParcial extends JFrame {
     
@@ -13,7 +18,24 @@ public class TParcial extends JFrame {
     public ImageIcon icono = new ImageIcon(icono_URL);
     //ImageIcon icono = new ImageIcon("C:\\Users\\jcver\\OneDrive\\Documents\\NetBeansProjects\\TParcial\\src\\main\\java\\objetos\\bonoparcial\\icono.png"); // OG Version
     
-    public TParcial(String nombre_Ventana){
+    private TableModel getTableData (String dataFile) {
+      CSVTableModel tableData;
+      
+      try {
+        FileReader csvReader = new FileReader();
+        ArrayList<ArrayList<String>> rawData = csvReader.readCSVFile(dataFile);
+        
+        tableData = new CSVTableModel(rawData.getFirst(), new ArrayList(rawData.subList(0, rawData.size())));
+
+      } catch (IOException err){
+        System.err.printf("ERROR WHILE LOADING CSV TABLE DATA FILE: %s", err.toString());
+        return null;
+      }
+
+      return tableData;
+    }
+    
+    public TParcial(String nombre_Ventana) throws IOException {
         /*
          * Ventana
          */
@@ -27,7 +49,9 @@ public class TParcial extends JFrame {
         /*
          * Tabla
          */
-        JTable tabla = new JTable(informacion, columnas);
+        TableModel tableData = getTableData("base_data.csv");
+
+        JTable tabla = new JTable(tableData);
         //tabla.setBounds(0, 0, 300, 400);
         //tabla.setRowHeight(5); // No creo que sea necesario
         TableColumnModel modelo_Columnas = tabla.getColumnModel();
@@ -50,32 +74,7 @@ public class TParcial extends JFrame {
         ventana.setVisible(true);
     }
     
-    public String[] columnas = {"1","2","3", "4", "5", "6"};
-    public String[][] informacion = {{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}, 
-                          {"un","deux","trois", "quatre", "cinq", "six"},    
-                          {"eins","zwai","drei", "vier", "fünf", "sechs"},{"uno","dos","tres", "cuatro", "cinco", "seis"},
-                          {"one", "two", "three", "four", "five", "six"}};
-    
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Hello World!");
         System.out.println("Mostrando ventana en pantalla...");
         TParcial ventana = new TParcial("TParcial");
