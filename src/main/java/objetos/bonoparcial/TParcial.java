@@ -5,20 +5,33 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import java.awt.Component;
+import java.awt.Image;
 
 import javax.swing.*;
 import javax.swing.table.*;
 
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
 import java.util.ArrayList;
-
 import java.io.IOException;
 
 public class TParcial extends JFrame {
-    private URL icono_URL = getClass().getClassLoader().getResource("icono.png");
-    private ImageIcon icono = new ImageIcon(icono_URL);
     private String windowName;
+
+    private Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
+
+    /**
+     * Genera un Icono para la Ventana apartir del icono guardado en el proyecto
+     * @author Martín Hernández
+     * @return ImageIcon
+     * @see    ImageIcon
+     * @see    FileSystems
+     */
+    private Image generateWindowIcon () {
+      return new ImageIcon(projectRoot.toString() + "/src/main/resources/icon.png").getImage();
+    }
     
     /**
      * Genera apartir un archivo CSV un TableModel para una JTable
@@ -64,7 +77,7 @@ public class TParcial extends JFrame {
       mainFrame.setResizable(false); // Deshabilita cambio de tamaño y botón []
       mainFrame.setSize(600, 400); // Tamaño
       mainFrame.setLocationRelativeTo(null); // Ubicación
-      mainFrame.setIconImage(icono.getImage());
+      mainFrame.setIconImage(generateWindowIcon());
 
       return mainFrame;
     }
