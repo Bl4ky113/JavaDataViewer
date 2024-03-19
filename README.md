@@ -2,6 +2,6 @@
 # Java Dataviewer
 
 ## TODO
-- [  ] Icon
-- [  ] Cargar datos desde archivo csv
-- [  ] 
+- [ ] Icon
+- [x] Cargar datos desde archivo csv
+- [ ] 

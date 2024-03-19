@@ -46,10 +46,17 @@ public class TParcial extends JFrame {
       return tableData;
     }
 
+    /**
+     * Configuración de JFrame
+     */
     private void configWindow () {
       return;
     }
 
+    /**
+     * Genera el Main Frame o Frame Base y lo configura
+     * @return JFrame
+     */
     private JFrame generateMainFrame () {
       JFrame mainFrame = new JFrame(this.windowName);
 
@@ -62,6 +69,11 @@ public class TParcial extends JFrame {
       return mainFrame;
     }
 
+    /**
+     * Genera la tabla y la configura, con datos apartir un archivo csv
+     * @param String dataFilePath: Path del archivo csv
+     * @return JTable
+     */
     private JTable generateTable (String dataFilePath) {
       TableModel tableData = getTableData(dataFilePath);
       JTable table = new JTable(tableData);
@@ -78,6 +90,11 @@ public class TParcial extends JFrame {
       return table;
     }
 
+    /**
+     * Genera el Panel con los scrollbars y lo configura, agrega un componente hijo
+     * @param Component childElement: Componente a agregar al Panel
+     * @return JScrollPane
+     */
     private JScrollPane generatePanel (Component childElement) {
         JScrollPane panel = new JScrollPane(
             childElement,
@@ -88,6 +105,11 @@ public class TParcial extends JFrame {
         return panel;
     }
     
+    /**
+     * Constructor de la Ventana, configura, estructura y genera sus contenidos
+     * @param String windowName: Nombre de la ventana
+     * @return TParcial
+     */
     public TParcial (String windowName) {
         this.windowName = windowName; 
         configWindow();
