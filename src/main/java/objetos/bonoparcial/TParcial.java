@@ -18,6 +18,15 @@ public class TParcial extends JFrame {
     public ImageIcon icono = new ImageIcon(icono_URL);
     //ImageIcon icono = new ImageIcon("C:\\Users\\jcver\\OneDrive\\Documents\\NetBeansProjects\\TParcial\\src\\main\\java\\objetos\\bonoparcial\\icono.png"); // OG Version
     
+    /**
+     * Genera apartir un archivo CSV un TableModel para una JTable
+     *
+     * @param   String dataFile: Path en src/main/resources/csv/ de un archivo de datos csv
+     * @return  TableModel
+     * @author  Martín Hernández (mahernandezor@unal.edu.co)
+     * @see     CSVTableModel
+     * @see     FileReader
+     */
     private TableModel getTableData (String dataFile) {
       CSVTableModel tableData;
       
@@ -25,7 +34,7 @@ public class TParcial extends JFrame {
         FileReader csvReader = new FileReader();
         ArrayList<ArrayList<String>> rawData = csvReader.readCSVFile(dataFile);
         
-        tableData = new CSVTableModel(rawData.getFirst(), new ArrayList(rawData.subList(0, rawData.size())));
+        tableData = new CSVTableModel(rawData);
 
       } catch (IOException err){
         System.err.printf("ERROR WHILE LOADING CSV TABLE DATA FILE: %s", err.toString());
