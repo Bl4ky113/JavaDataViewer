@@ -49,4 +49,9 @@ class CSVTableModel extends AbstractTableModel {
   public String getColumnName (int index) {
     return columnNames.get(index);
   }
+
+  @Override
+  public boolean isCellEditable (int row, int column) {
+    return false;
+  }
 }
