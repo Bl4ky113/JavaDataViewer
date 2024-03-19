@@ -11,5 +11,5 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>objetos.bonoparcial.Main</exec.mainClass>
     </properties>
-    <name>TParcial</name>
+    <name>Main</name>
 </project>
