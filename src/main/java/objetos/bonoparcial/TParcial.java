@@ -3,6 +3,9 @@ package objetos.bonoparcial;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import java.awt.Component;
+
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -13,10 +16,9 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 public class TParcial extends JFrame {
-    
-    public URL icono_URL = getClass().getClassLoader().getResource("icono.png");
-    public ImageIcon icono = new ImageIcon(icono_URL);
-    //ImageIcon icono = new ImageIcon("C:\\Users\\jcver\\OneDrive\\Documents\\NetBeansProjects\\TParcial\\src\\main\\java\\objetos\\bonoparcial\\icono.png"); // OG Version
+    private URL icono_URL = getClass().getClassLoader().getResource("icono.png");
+    private ImageIcon icono = new ImageIcon(icono_URL);
+    private String windowName;
     
     /**
      * Genera apartir un archivo CSV un TableModel para una JTable
@@ -43,47 +45,58 @@ public class TParcial extends JFrame {
 
       return tableData;
     }
-    
-    public TParcial(String nombre_Ventana) throws IOException {
-        /*
-         * Ventana
-         */
-        JFrame ventana = new JFrame(nombre_Ventana); // Crea JFrame
-        ventana.setDefaultCloseOperation(EXIT_ON_CLOSE); // Termina programa al cerrar la ventana
-        ventana.setResizable(false); // Deshabilita cambio de tamaño y botón []
-        ventana.setSize(600, 400); // Tamaño
-        ventana.setLocationRelativeTo(null); // Ubicación
-        ventana.setIconImage(icono.getImage());
-        
-        /*
-         * Tabla
-         */
-        TableModel tableData = getTableData("base_data.csv");
 
-        JTable tabla = new JTable(tableData);
-        //tabla.setBounds(0, 0, 300, 400);
-        //tabla.setRowHeight(5); // No creo que sea necesario
-        TableColumnModel modelo_Columnas = tabla.getColumnModel();
-        for (int i = 0; i < modelo_Columnas.getColumnCount(); i++) {
-          modelo_Columnas.getColumn(i).setPreferredWidth(150);
-        }
-        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // No permite que se ajuste el tamaño de las columnas
-        tabla.getTableHeader().setReorderingAllowed(false);
-        /*
-         * Panel
-         */
-        JScrollPane panel = new JScrollPane(tabla,
-                ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        ventana.add(panel);
-        //pack(); // ¿Es necesario usarlo?
-        ventana.setVisible(true);
+    private void configWindow () {
+      return;
+    }
+
+    private JFrame generateMainFrame () {
+      JFrame mainFrame = new JFrame(this.windowName);
+
+      mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE); // Termina programa al cerrar la ventana
+      mainFrame.setResizable(false); // Deshabilita cambio de tamaño y botón []
+      mainFrame.setSize(600, 400); // Tamaño
+      mainFrame.setLocationRelativeTo(null); // Ubicación
+      mainFrame.setIconImage(icono.getImage());
+
+      return mainFrame;
+    }
+
+    private JTable generateTable (String dataFilePath) {
+      TableModel tableData = getTableData(dataFilePath);
+      JTable table = new JTable(tableData);
+      
+      table.setRowHeight(24);
+      TableColumnModel modelo_Columnas = table.getColumnModel();
+      for (int i = 0; i < modelo_Columnas.getColumnCount(); i++) {
+        modelo_Columnas.getColumn(i).setPreferredWidth(150);
+      }
+
+      table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+      table.getTableHeader().setReorderingAllowed(false);
+
+      return table;
+    }
+
+    private JScrollPane generatePanel (Component childElement) {
+        JScrollPane panel = new JScrollPane(
+            childElement,
+            ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS
+        );
+
+        return panel;
     }
     
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello World!");
-        System.out.println("Mostrando ventana en pantalla...");
-        TParcial ventana = new TParcial("TParcial");
-        System.out.println("Finalizando.");
-    }
+    public TParcial (String windowName) {
+        this.windowName = windowName; 
+        configWindow();
+
+        JFrame ventana = generateMainFrame();
+        JTable tabla = generateTable("base_data.csv");
+        JScrollPane panel = generatePanel(tabla);    
+
+        ventana.add(panel);
+        ventana.setVisible(true);
+    }  
 }
