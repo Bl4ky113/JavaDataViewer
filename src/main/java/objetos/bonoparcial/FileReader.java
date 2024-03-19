@@ -22,9 +22,6 @@ import java.io.IOException;
  * @see    Paths
  */
 class FileReader {
-  /**
-   * Directorio base, o root, del proyecto
-   */
   private Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
 
   public FileReader () {}

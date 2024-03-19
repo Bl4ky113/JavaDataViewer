@@ -1,16 +1,17 @@
 package objetos.bonoparcial;
 
-import java.awt.Frame;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
 import java.awt.Component;
 import java.awt.Image;
 
-import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.ImageIcon;
 
-import java.net.URL;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableColumnModel;
+
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
@@ -18,9 +19,9 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 public class TParcial extends JFrame {
-    private String windowName;
-
     private Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
+
+    private String windowName;
 
     /**
      * Genera un Icono para la Ventana apartir del icono guardado en el proyecto
