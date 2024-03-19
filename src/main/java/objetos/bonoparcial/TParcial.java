@@ -5,7 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.table.*;
-import javax.swing.table.TableModel;
+
 import java.net.URL;
 
 import java.util.ArrayList;
@@ -55,12 +55,9 @@ public class TParcial extends JFrame {
         //tabla.setBounds(0, 0, 300, 400);
         //tabla.setRowHeight(5); // No creo que sea necesario
         TableColumnModel modelo_Columnas = tabla.getColumnModel();
-        modelo_Columnas.getColumn(0).setPreferredWidth(150);
-        modelo_Columnas.getColumn(1).setPreferredWidth(150);
-        modelo_Columnas.getColumn(2).setPreferredWidth(150);
-        modelo_Columnas.getColumn(3).setPreferredWidth(150);
-        modelo_Columnas.getColumn(4).setPreferredWidth(150);
-        modelo_Columnas.getColumn(5).setPreferredWidth(150);
+        for (int i = 0; i < modelo_Columnas.getColumnCount(); i++) {
+          modelo_Columnas.getColumn(i).setPreferredWidth(150);
+        }
         tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // No permite que se ajuste el tamaño de las columnas
         tabla.getTableHeader().setReorderingAllowed(false);
         /*
