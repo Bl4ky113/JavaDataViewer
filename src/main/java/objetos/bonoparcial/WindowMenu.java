@@ -55,7 +55,7 @@ public class WindowMenu extends JMenuBar implements ActionListener, ItemListener
     fileMenu.setMnemonic(KeyEvent.VK_A);
 
     JMenuItem openFileItem = generateMenuItem("Abrir archivo csv", "FileView.fileIcon", KeyEvent.VK_C);
-    openFileItem.addAction Listener(this);
+    openFileItem.addActionListener(this);
 
     fileMenu.add(openFileItem);
     return fileMenu;

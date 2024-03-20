@@ -87,13 +87,7 @@ public class TParcial extends JFrame {
 
       TableModel newTableModel = getTableData(dataFile);
       this.tabla.setModel(newTableModel);
-    }
-
-    /**
-     * Configuración de JFrame
-     */
-    private void configWindow () {
-      return;
+      configTable(this.tabla);
     }
 
     /**
@@ -123,6 +117,22 @@ public class TParcial extends JFrame {
     }
 
     /**
+     * Apartir de la referencia de una JTable configura su diseño y estilo
+     * @author Martín Hernández (mahernandezor@unal.edu.co)
+     * @param JTable tableRef: Referencia a la tabla
+     */
+    private void configTable (JTable tableRef) {
+      tableRef.getTableHeader().setResizingAllowed(false);
+      tableRef.getTableHeader().setReorderingAllowed(false);
+      tableRef.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // No permite que se ajuste el tamaño de las columnas
+      tableRef.setRowHeight(24);
+      TableColumnModel modelo_Columnas = tableRef.getColumnModel();
+      for (int i = 0; i < modelo_Columnas.getColumnCount(); i++) {
+        modelo_Columnas.getColumn(i).setPreferredWidth(150);
+      }
+    }
+
+    /**
      * Genera la tabla y la configura, con datos apartir un archivo csv
      * @param String dataFilePath: Path del archivo csv
      * @return JTable
@@ -130,14 +140,8 @@ public class TParcial extends JFrame {
     private JTable generateTable (String dataFilePath) {
       TableModel tableData = getLocalTableData(dataFilePath);
       JTable table = new JTable(tableData);
-      table.getTableHeader().setResizingAllowed(false);
-      table.getTableHeader().setReorderingAllowed(false);
-      table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // No permite que se ajuste el tamaño de las columnas
-      table.setRowHeight(24);
-      TableColumnModel modelo_Columnas = table.getColumnModel();
-      for (int i = 0; i < modelo_Columnas.getColumnCount(); i++) {
-        modelo_Columnas.getColumn(i).setPreferredWidth(150);
-      }
+      
+      configTable(table);
       return table;
     }
 
@@ -164,7 +168,6 @@ public class TParcial extends JFrame {
 
     public TParcial (String windowName) {
       this.windowName = windowName;
-      this.configWindow();
       
       this.tabla = generateTable("base_data.csv");
     
