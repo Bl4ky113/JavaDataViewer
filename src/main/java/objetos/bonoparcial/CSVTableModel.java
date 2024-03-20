@@ -2,7 +2,7 @@
 package objetos.bonoparcial;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.event.TableModelEvent;
+
 
 import java.util.ArrayList;
 

@@ -2,6 +2,7 @@
 package objetos.bonoparcial;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.UIManager;
 import javax.swing.Icon;
+import javax.swing.JFileChooser;
 
 import java.util.ArrayList;
 
@@ -46,13 +48,14 @@ public class WindowMenu extends JMenuBar implements ActionListener, ItemListener
    * @author Martín Hernández (mahernandezor@unal.edu.co)
    * @return JMenu de selección de archivos
    */
+  
   private JMenu generateFileChooserMenu () {
     JMenu fileMenu = new JMenu();
     fileMenu.setText("Archivos");
     fileMenu.setMnemonic(KeyEvent.VK_A);
 
     JMenuItem openFileItem = generateMenuItem("Abrir archivo csv", "FileView.fileIcon", KeyEvent.VK_C);
-    openFileItem.addActionListener(this);
+    openFileItem.addAction Listener(this);
 
     fileMenu.add(openFileItem);
     return fileMenu;

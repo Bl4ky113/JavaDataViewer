@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.io.IOException;
 
+
 public class TParcial extends JFrame {
     private Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
     private FileReader csvReader = new FileReader();
@@ -129,16 +130,14 @@ public class TParcial extends JFrame {
     private JTable generateTable (String dataFilePath) {
       TableModel tableData = getLocalTableData(dataFilePath);
       JTable table = new JTable(tableData);
-      
+      table.getTableHeader().setResizingAllowed(false);
+      table.getTableHeader().setReorderingAllowed(false);
+      table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // No permite que se ajuste el tamaño de las columnas
       table.setRowHeight(24);
       TableColumnModel modelo_Columnas = table.getColumnModel();
       for (int i = 0; i < modelo_Columnas.getColumnCount(); i++) {
         modelo_Columnas.getColumn(i).setPreferredWidth(150);
       }
-
-      table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-      table.getTableHeader().setReorderingAllowed(false);
-
       return table;
     }
 
@@ -156,18 +155,19 @@ public class TParcial extends JFrame {
 
         return panel;
     }
-    
+
     /**
      * Constructor de la Ventana, configura, estructura y genera sus contenidos
      * @param String windowName: Nombre de la ventana
      * @return TParcial
      */
+
     public TParcial (String windowName) {
       this.windowName = windowName;
       this.configWindow();
-
+      
       this.tabla = generateTable("base_data.csv");
-
+    
       JFrame ventana = generateMainFrame();
       JScrollPane panel = generatePanel(tabla);
       JMenuBar menu = generateWindowMenu();
