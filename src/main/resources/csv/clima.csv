@@ -1,4 +1,4 @@
-"mes","dia","hora","temperatura","punto_rocio","humedad"
+mes,dia,hora,temperatura,punto_rocio,humedad
 10,7,5,69.08,66.02,89.98
 10,2,3,60.98,55.04,80.78
 9,21,17,75.02,62.96,66.13

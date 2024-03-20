@@ -1,31 +1,31 @@
-"fabricante","modelo","anio","clase","transmision","traccion"
-"Volkswagen","Routan",2013,"Minivan - 2WD","Automática 6-velocidades","Delantera"
-"Plymouth","Laser",1994,"Automóviles subcompactos","Manual 5-velocidades","Delantera"
-"Ford","Focus Station Wagon",2001,"Station Wagons medianos","Automática 4-velocidades","Delantera"
-"Chevrolet","Optra Wagon",2006,"Station Wagons pequeños","Manual 5-velocidades","Delantera"
-"Isuzu","Rodeo 2WD",1992,"Vehículos propósito especial","Automática 4-velocidades","Trasera"
-"Kia","Sorento 4WD",2013,"Vehículo utilitario pequeño 4WD","Automática 6-velocidades","Cuatro ruedas"
-"Nissan","370Z",2010,"Automóviles de dos asientos","Automática (S7)","Trasera"
-"Federal Coach","Lincoln Eagle/Windsor",1995,"Automóviles grandes","Automática 4-velocidades","Trasera"
-"GMC","T15 (S15) Pickup 4WD",1985,"Camionetas estándar","Automática 4-velocidades","Cuatro ruedas o Total permanente"
-"Chevrolet","Colorado 2WD",2006,"Camionetas estándar 2WD","Automática 4-velocidades","Trasera"
-"Chevrolet","Corvette",2002,"Automóviles de dos asientos","Automática 4-velocidades","Trasera"
-"Chevrolet","C10 Pickup 2WD",1985,"Camionetas estándar","Automática 3-velocidades","Trasera"
-"Mitsubishi","Lancer",2011,"Automóviles compactos","Manual 5-velocidades","Delantera"
-"Ford","Explorer Sport Trac 4WD",2002,"Camionetas estándar 4WD","Manual 5-velocidades","Cuatro ruedas o Total permanente"
-"Chevrolet","Silverado 1500 2WD",2003,"Camionetas estándar 2WD","Manual 5-velocidades","Trasera"
-"Mitsubishi","Mirage",1999,"Automóviles subcompactos","Automática 4-velocidades","Delantera"
-"GMC","Canyon Crew Cab 4WD",2006,"Camionetas estándar 4WD","Automática 4-velocidades","Cuatro ruedas o Total permanente"
-"Mercury","Mariner Hybrid FWD",2011,"Vehículo utilitario deportivo - 2WD","Automática (proporción de cambios variable)","Delantera"
-"Mercury","Tracer",1988,"Automóviles compactos","Automática 3-velocidades","Delantera"
-"Chevrolet","Optra",2005,"Automóviles compactos","Automática 4-velocidades","Delantera"
-"Dodge","Dakota Pickup 2WD",1989,"Camionetas estándar","Manual 5-velocidades","Trasera"
-"Nissan","Truck 2WD",1993,"Camionetas pequeñas","Manual 5-velocidades","Trasera"
-"GMC","Sonoma 2WD",1996,"Camionetas pequeñas","Automática 4-velocidades","Trasera"
-"Mitsubishi","Eclipse",1994,"Automóviles subcompactos","Automática 4-velocidades","Delantera"
-"Infiniti","M45",2006,"Automóviles grandes","Automática (S5)","Trasera"
-"Pontiac","Grand Prix",2006,"Automóviles medianos","Automática 4-velocidades","Delantera"
-"Hyundai","Scoupe",1991,"Automóviles subcompactos","Manual 5-velocidades","Delantera"
-"Oldsmobile","Cutlass Supreme",1993,"Automóviles medianos","Automática 4-velocidades","Delantera"
-"Chevrolet","Blazer 2WD",1997,"Vehículos propósito especial","Manual 5-velocidades","Trasera"
-"Ford","E150 Club Wagon",1998,"Vans tipo pasajero","Automática 4-velocidades","Trasera"
+fabricante,modelo,anio,clase,transmision,traccion
+Volkswagen,Routan,2013,Minivan - 2WD,Automática 6-velocidades,Delantera
+Plymouth,Laser,1994,Automóviles subcompactos,Manual 5-velocidades,Delantera
+Ford,Focus Station Wagon,2001,Station Wagons medianos,Automática 4-velocidades,Delantera
+Chevrolet,Optra Wagon,2006,Station Wagons pequeños,Manual 5-velocidades,Delantera
+Isuzu,Rodeo 2WD,1992,Vehículos propósito especial,Automática 4-velocidades,Trasera
+Kia,Sorento 4WD,2013,Vehículo utilitario pequeño 4WD,Automática 6-velocidades,Cuatro ruedas
+Nissan,370Z,2010,Automóviles de dos asientos,Automática (S7),Trasera
+Federal Coach,Lincoln Eagle/Windsor,1995,Automóviles grandes,Automática 4-velocidades,Trasera
+GMC,T15 (S15) Pickup 4WD,1985,Camionetas estándar,Automática 4-velocidades,Cuatro ruedas o Total permanente
+Chevrolet,Colorado 2WD,2006,Camionetas estándar 2WD,Automática 4-velocidades,Trasera
+Chevrolet,Corvette,2002,Automóviles de dos asientos,Automática 4-velocidades,Trasera
+Chevrolet,C10 Pickup 2WD,1985,Camionetas estándar,Automática 3-velocidades,Trasera
+Mitsubishi,Lancer,2011,Automóviles compactos,Manual 5-velocidades,Delantera
+Ford,Explorer Sport Trac 4WD,2002,Camionetas estándar 4WD,Manual 5-velocidades,Cuatro ruedas o Total permanente
+Chevrolet,Silverado 1500 2WD,2003,Camionetas estándar 2WD,Manual 5-velocidades,Trasera
+Mitsubishi,Mirage,1999,Automóviles subcompactos,Automática 4-velocidades,Delantera
+GMC,Canyon Crew Cab 4WD,2006,Camionetas estándar 4WD,Automática 4-velocidades,Cuatro ruedas o Total permanente
+Mercury,Mariner Hybrid FWD,2011,Vehículo utilitario deportivo - 2WD,Automática (proporción de cambios variable),Delantera
+Mercury,Tracer,1988,Automóviles compactos,Automática 3-velocidades,Delantera
+Chevrolet,Optra,2005,Automóviles compactos,Automática 4-velocidades,Delantera
+Dodge,Dakota Pickup 2WD,1989,Camionetas estándar,Manual 5-velocidades,Trasera
+Nissan,Truck 2WD,1993,Camionetas pequeñas,Manual 5-velocidades,Trasera
+GMC,Sonoma 2WD,1996,Camionetas pequeñas,Automática 4-velocidades,Trasera
+Mitsubishi,Eclipse,1994,Automóviles subcompactos,Automática 4-velocidades,Delantera
+Infiniti,M45,2006,Automóviles grandes,Automática (S5),Trasera
+Pontiac,Grand Prix,2006,Automóviles medianos,Automática 4-velocidades,Delantera
+Hyundai,Scoupe,1991,Automóviles subcompactos,Manual 5-velocidades,Delantera
+Oldsmobile,Cutlass Supreme,1993,Automóviles medianos,Automática 4-velocidades,Delantera
+Chevrolet,Blazer 2WD,1997,Vehículos propósito especial,Manual 5-velocidades,Trasera
+Ford,E150 Club Wagon,1998,Vans tipo pasajero,Automática 4-velocidades,Trasera
