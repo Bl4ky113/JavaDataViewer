@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Image;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ImageIcon;
@@ -20,8 +21,10 @@ import java.io.IOException;
 
 public class TParcial extends JFrame {
     private Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
+    private FileReader csvReader = new FileReader();
 
     private String windowName;
+    private JTable tabla; // Referencia a la Tabla
 
     /**
      * Genera un Icono para la Ventana apartir del icono guardado en el proyecto
@@ -47,12 +50,11 @@ public class TParcial extends JFrame {
       CSVTableModel tableData;
       
       try {
-        FileReader csvReader = new FileReader();
         ArrayList<ArrayList<String>> rawData = csvReader.readCSVFile(dataFile);
         
         tableData = new CSVTableModel(rawData);
 
-      } catch (IOException err){
+      } catch (IOException err) {
         System.err.printf("ERROR WHILE LOADING CSV TABLE DATA FILE: %s", err.toString());
         return null;
       }
@@ -61,10 +63,46 @@ public class TParcial extends JFrame {
     }
 
     /**
+     * 'Decorador' al metodo getTableData para obtener archivos CSV locales
+     *
+     * @author Martín Hernández (mahernandezor@unal.edu.co)
+     * @param String dataFile: Path del archivo CSV en /src/main/resources/csv/
+     * @return TableModel con los datos del archivo CSV
+     */
+    private TableModel getLocalTableData (String dataFile) {
+      return getTableData(projectRoot.toString() + "/src/main/resources/csv/" + dataFile);
+    } 
+
+    /**
+     * Actualiza la tabla del MainFrame apartir de los datos de un nuevo archivo CSV dado
+     *
+     * @author Martín Hernández (mahernandezor@unal.edu.co)
+     * @param String dataFile: Path del nuevo archivo csv a leer
+     */
+    public void updateTableData (String dataFile) {
+      if (dataFile == null) {
+        return;
+      }
+
+      TableModel newTableModel = getTableData(dataFile);
+      this.tabla.setModel(newTableModel);
+    }
+
+    /**
      * Configuración de JFrame
      */
     private void configWindow () {
       return;
+    }
+
+    /**
+     * Genera un menu de acciones y opciones para la ventana
+     * @author Martín Hernández (mahernandezor@unal.edu.co)
+     * @see JMenuBar
+     */
+    private JMenuBar generateWindowMenu () {
+      JMenuBar menuBar = new WindowMenu(this, csvReader);
+      return menuBar;
     }
 
     /**
@@ -89,7 +127,7 @@ public class TParcial extends JFrame {
      * @return JTable
      */
     private JTable generateTable (String dataFilePath) {
-      TableModel tableData = getTableData(dataFilePath);
+      TableModel tableData = getLocalTableData(dataFilePath);
       JTable table = new JTable(tableData);
       
       table.setRowHeight(24);
@@ -125,14 +163,17 @@ public class TParcial extends JFrame {
      * @return TParcial
      */
     public TParcial (String windowName) {
-        this.windowName = windowName; 
-        configWindow();
+      this.windowName = windowName;
+      this.configWindow();
 
-        JFrame ventana = generateMainFrame();
-        JTable tabla = generateTable("base_data.csv");
-        JScrollPane panel = generatePanel(tabla);    
+      this.tabla = generateTable("base_data.csv");
 
-        ventana.add(panel);
-        ventana.setVisible(true);
+      JFrame ventana = generateMainFrame();
+      JScrollPane panel = generatePanel(tabla);
+      JMenuBar menu = generateWindowMenu();
+
+      ventana.setJMenuBar(menu);
+      ventana.add(panel);
+      ventana.setVisible(true);
     }  
 }

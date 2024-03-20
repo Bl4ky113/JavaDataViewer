@@ -2,6 +2,7 @@
 package objetos.bonoparcial;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.event.TableModelEvent;
 
 import java.util.ArrayList;
 
@@ -12,14 +13,15 @@ import java.util.ArrayList;
  * @see    AbstractTableModel 
  * @see    JTable
  */
-class CSVTableModel extends AbstractTableModel {
+public class CSVTableModel extends AbstractTableModel {
   private ArrayList<String> columnNames;
   private ArrayList<ArrayList<String>> data;
 
   /**
    * Constructor para el modelo de los datos de la tabla
-   * @param ArrayList<ArrayList<String>> tableData: Datos para la tabla
-   * @see   ArrayList
+   * @author Martín Hernández (mahernandezor@unal.edu.co)
+   * @param  ArrayList<ArrayList<String>> tableData: Datos para la tabla
+   * @see    ArrayList
    */
   public CSVTableModel (ArrayList<ArrayList<String>> tableData) {
     this.columnNames = tableData.getFirst();
@@ -29,9 +31,9 @@ class CSVTableModel extends AbstractTableModel {
   }
 
   /**
-   * ======================
+   * ========================================
    * METODOS ABSTRACTOS DE AbstractTableModel
-   * ======================
+   * ========================================
    */
 
   public String getValueAt (int row, int column) {

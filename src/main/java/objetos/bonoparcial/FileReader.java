@@ -1,13 +1,20 @@
 
 package objetos.bonoparcial;
 
+import java.awt.Component;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import java.io.IOException;
@@ -21,19 +28,21 @@ import java.io.IOException;
  * @see    Path
  * @see    Paths
  */
-class FileReader {
+public class FileReader {
   private Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
 
   public FileReader () {}
 
   /**
-   * Genera un ArrayList con los valores de los Records dentro de un archivo csv
+   * Genera un ArrayList con los records de un archivo csv en el OS
    *
-   * @param   String. Path del archivo CSV dentro de /src/main/resources/csv/
-   * @return  Arraylist con valores de los Records
+   * @author Martín Hernández (mahernandezor@unal.edu.co)
+   * @param  String fileFolder: Path del folder del archivo CSV
+   * @param  String fileName: Nombre del archivo CSV
+   * @return ArrayList con valores de los records
    */
   public ArrayList<ArrayList<String>> readCSVFile (String fileStrPath) throws IOException {
-    Path filePath = Paths.get(projectRoot.toString(), "src/main/resources/csv/", fileStrPath);
+    Path filePath = Paths.get(fileStrPath);
     
     // Si el archivo no existe, tira un error
     if (Files.notExists(filePath)) {
@@ -54,6 +63,29 @@ class FileReader {
 
     return fileContent;
   }
+
+  /**
+   * Abre un JFileChooser para elegir un archivo CSV y retornar su path.
+   *
+   * @author Martín Hernández (mahernandezor@unal.edu.co)
+   * @param Component parentComponent: Componente padre del Dialog
+   * @return Path del archivo CSV
+   */
+  public String openAndReadCSVFile (Component parentComponent) {
+    JFileChooser csvChooser = new JFileChooser(projectRoot + "/src/main/resources/csv/");
+    FileFilter csvFilter = new FileNameExtensionFilter("Archivos CSV", "csv");
+
+    csvChooser.setDialogTitle("Selecciona un archivo CSV");
+    csvChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+    csvChooser.setFileFilter(csvFilter);
+
+    int resultChooser = csvChooser.showOpenDialog(parentComponent);
+
+    if (resultChooser != JFileChooser.APPROVE_OPTION) {
+      return null;
+    }
+
+    File csvFile = csvChooser.getSelectedFile();
+    return csvFile.getPath();
+  }
 }
-
-

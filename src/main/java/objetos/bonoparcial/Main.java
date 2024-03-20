@@ -7,8 +7,8 @@ package objetos.bonoparcial;
  * ==========
  */
 public class Main {
-    public static void main(String[] args) {
-        TParcial ventana = new TParcial("TParcial");
-        ventana.pack();
-    }
+  public static void main(String[] args) {
+      TParcial ventana = new TParcial("TParcial");
+      ventana.pack();
+  }
 }
