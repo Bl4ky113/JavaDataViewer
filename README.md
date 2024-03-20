@@ -1,5 +1,15 @@
-
 # Java Dataviewer
+
+## Integrantes
+
+- 
+- 
+- 
+- 
+- 
+- 
+- Juan Camilo Vergara (juvergarat@unal.edu.co)
+- 
 
 ## TODO
 - [ ] Icon
