@@ -7,7 +7,7 @@
 - 
 - 
 - 
-- 
+- Laura Alejandra Moreno (lamorenobo.edu.co)
 - Juan Camilo Vergara (juvergarat@unal.edu.co)
 - 
 
